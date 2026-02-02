@@ -254,18 +254,16 @@
         .checklist-container {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 30px 40px;
+            padding: 25px 30px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            max-width: 400px;
+            max-width: 450px;
             width: 100%;
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
         .checklist-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
             border-bottom: 1px solid #eee;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
@@ -273,12 +271,17 @@
             border-bottom: none;
         }
 
-        .checklist-item:hover {
-            background: rgba(255, 182, 193, 0.1);
-            margin: 0 -10px;
-            padding-left: 10px;
-            padding-right: 10px;
+        .item-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             border-radius: 10px;
+        }
+
+        .item-header:hover {
+            background: rgba(255, 182, 193, 0.15);
         }
 
         .checkbox {
@@ -326,6 +329,58 @@
         .checklist-item.checked .item-text {
             text-decoration: line-through;
             color: #aaa;
+        }
+
+        .item-arrow {
+            font-size: 0.8rem;
+            color: #aaa;
+            transition: transform 0.3s ease;
+        }
+
+        .checklist-item.expanded .item-arrow {
+            transform: rotate(180deg);
+        }
+
+        .item-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(135, 206, 235, 0.1);
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .checklist-item.expanded .item-dropdown {
+            max-height: 200px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .sub-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .sub-item {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            border: 2px solid var(--pink);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sub-item:hover {
+            background: var(--pink);
+            color: white;
+        }
+
+        .sub-item.selected {
+            background: var(--pink);
+            color: white;
         }
 
         .find-date-btn {
@@ -467,6 +522,8 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.5s ease 0.3s;
+            max-width: 380px;
+            width: 90%;
         }
 
         .match-card.show {
@@ -488,6 +545,99 @@
         .match-subtitle {
             color: #888;
             margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .photo-gallery-title {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .photo-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .photo-slot {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            border: 3px dashed var(--pink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            background: rgba(255, 182, 193, 0.1);
+            position: relative;
+        }
+
+        .photo-slot:hover {
+            border-color: var(--pink-dark);
+            background: rgba(255, 182, 193, 0.2);
+            transform: scale(1.05);
+        }
+
+        .photo-slot.has-photo {
+            border-style: solid;
+        }
+
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 1.5rem;
+            color: var(--pink);
+        }
+
+        .photo-slot.has-photo .photo-placeholder {
+            display: none;
+        }
+
+        .add-photo-hint {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        /* Hidden file input */
+        .photo-input {
+            display: none;
+        }
+
+        .match-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--pink-dark);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888;
         }
 
         .continue-btn {
@@ -744,34 +894,95 @@
 
         <div class="checklist-container">
             <div class="checklist-item" data-item="sunscreen">
-                <div class="checkbox"><span class="checkbox-check">✓</span></div>
-                <span class="item-icon">🧴</span>
-                <span class="item-text">Pack Sunscreen</span>
+                <div class="item-header">
+                    <div class="checkbox"><span class="checkbox-check">✓</span></div>
+                    <span class="item-icon">🧴</span>
+                    <span class="item-text">Pack Sunscreen</span>
+                    <span class="item-arrow">▼</span>
+                </div>
+                <div class="item-dropdown">
+                    <div class="sub-items">
+                        <span class="sub-item" data-sub="spf50">SPF 50+ 🌞</span>
+                        <span class="sub-item" data-sub="lipsunscreen">Lip Balm SPF 💋</span>
+                        <span class="sub-item" data-sub="aftersun">After-sun Lotion 🧊</span>
+                    </div>
+                </div>
             </div>
             <div class="checklist-item" data-item="basket">
-                <div class="checkbox"><span class="checkbox-check">✓</span></div>
-                <span class="item-icon">🧺</span>
-                <span class="item-text">Pack Picnic Basket</span>
+                <div class="item-header">
+                    <div class="checkbox"><span class="checkbox-check">✓</span></div>
+                    <span class="item-icon">🧺</span>
+                    <span class="item-text">Pack Picnic Basket</span>
+                    <span class="item-arrow">▼</span>
+                </div>
+                <div class="item-dropdown">
+                    <div class="sub-items">
+                        <span class="sub-item" data-sub="blanket">Cozy Blanket 🧣</span>
+                        <span class="sub-item" data-sub="plates">Cute Plates 🍽️</span>
+                        <span class="sub-item" data-sub="cups">Drinks & Cups 🥤</span>
+                    </div>
+                </div>
             </div>
             <div class="checklist-item" data-item="swimsuit">
-                <div class="checkbox"><span class="checkbox-check">✓</span></div>
-                <span class="item-icon">👙</span>
-                <span class="item-text">Get Swimsuits</span>
+                <div class="item-header">
+                    <div class="checkbox"><span class="checkbox-check">✓</span></div>
+                    <span class="item-icon">👙</span>
+                    <span class="item-text">Get Swimsuits</span>
+                    <span class="item-arrow">▼</span>
+                </div>
+                <div class="item-dropdown">
+                    <div class="sub-items">
+                        <span class="sub-item" data-sub="bikini">Cute Bikini 👙</span>
+                        <span class="sub-item" data-sub="coverup">Cover-up 👗</span>
+                        <span class="sub-item" data-sub="flipflops">Flip Flops 🩴</span>
+                    </div>
+                </div>
             </div>
             <div class="checklist-item" data-item="towels">
-                <div class="checkbox"><span class="checkbox-check">✓</span></div>
-                <span class="item-icon">🏖️</span>
-                <span class="item-text">Beach Towels</span>
+                <div class="item-header">
+                    <div class="checkbox"><span class="checkbox-check">✓</span></div>
+                    <span class="item-icon">🏖️</span>
+                    <span class="item-text">Beach Towels</span>
+                    <span class="item-arrow">▼</span>
+                </div>
+                <div class="item-dropdown">
+                    <div class="sub-items">
+                        <span class="sub-item" data-sub="bigtowel">Big Beach Towel 🌊</span>
+                        <span class="sub-item" data-sub="facetowel">Face Towels 🧖</span>
+                        <span class="sub-item" data-sub="umbrella">Beach Umbrella ⛱️</span>
+                    </div>
+                </div>
             </div>
             <div class="checklist-item" data-item="snacks">
-                <div class="checkbox"><span class="checkbox-check">✓</span></div>
-                <span class="item-icon">🍉</span>
-                <span class="item-text">Yummy Snacks</span>
+                <div class="item-header">
+                    <div class="checkbox"><span class="checkbox-check">✓</span></div>
+                    <span class="item-icon">🍉</span>
+                    <span class="item-text">Yummy Snacks</span>
+                    <span class="item-arrow">▼</span>
+                </div>
+                <div class="item-dropdown">
+                    <div class="sub-items">
+                        <span class="sub-item" data-sub="fruits">Fresh Fruits 🍓</span>
+                        <span class="sub-item" data-sub="sandwiches">Sandwiches 🥪</span>
+                        <span class="sub-item" data-sub="icecream">Ice Cream 🍦</span>
+                        <span class="sub-item" data-sub="water">Water Bottles 💧</span>
+                    </div>
+                </div>
             </div>
             <div class="checklist-item" data-item="camera">
-                <div class="checkbox"><span class="checkbox-check">✓</span></div>
-                <span class="item-icon">📸</span>
-                <span class="item-text">Camera for Memories</span>
+                <div class="item-header">
+                    <div class="checkbox"><span class="checkbox-check">✓</span></div>
+                    <span class="item-icon">📸</span>
+                    <span class="item-text">Camera for Memories</span>
+                    <span class="item-arrow">▼</span>
+                </div>
+                <div class="item-dropdown">
+                    <div class="sub-items">
+                        <span class="sub-item" data-sub="polaroid">Polaroid Camera 📷</span>
+                        <span class="sub-item" data-sub="selfie">Selfie Stick 🤳</span>
+                        <span class="sub-item" data-sub="waterproof">Waterproof Case 💦</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -791,6 +1002,42 @@
             <div class="match-emoji">🥰</div>
             <p class="match-name">Meco</p>
             <p class="match-subtitle">98% compatible • Beach lover • Super cute</p>
+            <div class="photo-gallery">
+                <p class="photo-gallery-title">Our Cute Moments Together 💕</p>
+                <div class="photo-container">
+                    <div class="photo-slot" data-slot="1">
+                        <span class="photo-placeholder">+</span>
+                        <input type="file" class="photo-input" accept="image/*" id="photo1">
+                    </div>
+                    <div class="photo-slot" data-slot="2">
+                        <span class="photo-placeholder">+</span>
+                        <input type="file" class="photo-input" accept="image/*" id="photo2">
+                    </div>
+                    <div class="photo-slot" data-slot="3">
+                        <span class="photo-placeholder">+</span>
+                        <input type="file" class="photo-input" accept="image/*" id="photo3">
+                    </div>
+                    <div class="photo-slot" data-slot="4">
+                        <span class="photo-placeholder">+</span>
+                        <input type="file" class="photo-input" accept="image/*" id="photo4">
+                    </div>
+                </div>
+                <p class="add-photo-hint">Click to add your photos</p>
+            </div>
+            <div class="match-stats">
+                <div class="stat">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Compatible</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">💕</div>
+                    <div class="stat-label">Beach Lover</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">✨</div>
+                    <div class="stat-label">Super Cute</div>
+                </div>
+            </div>
         </div>
         <button class="continue-btn" id="continueBtn">See what they want to ask... 💌</button>
     </div>
@@ -857,9 +1104,61 @@
             let checkedCount = 0;
 
             items.forEach(item => {
-                item.addEventListener('click', () => {
+                const header = item.querySelector('.item-header');
+                const subItems = item.querySelectorAll('.sub-item');
+                let selectedSubs = 0;
+                const totalSubs = subItems.length;
+
+                // Toggle dropdown on header click
+                header.addEventListener('click', (e) => {
+                    // Don't toggle if clicking checkbox area
+                    if (e.target.closest('.checkbox')) return;
+
+                    // Close other dropdowns
+                    items.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('expanded');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    item.classList.toggle('expanded');
+                });
+
+                // Handle sub-item selection
+                subItems.forEach(subItem => {
+                    subItem.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (!subItem.classList.contains('selected')) {
+                            subItem.classList.add('selected');
+                            selectedSubs++;
+
+                            // Check parent item when all sub-items are selected
+                            if (selectedSubs === totalSubs && !item.classList.contains('checked')) {
+                                item.classList.add('checked');
+                                item.classList.remove('expanded');
+                                checkedCount++;
+
+                                if (checkedCount === items.length) {
+                                    setTimeout(() => {
+                                        findDateBtn.classList.add('show');
+                                    }, 500);
+                                }
+                            }
+                        }
+                    });
+                });
+
+                // Allow checking item directly by clicking checkbox
+                const checkbox = item.querySelector('.checkbox');
+                checkbox.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     if (!item.classList.contains('checked')) {
                         item.classList.add('checked');
+                        item.classList.remove('expanded');
+                        // Mark all sub-items as selected
+                        subItems.forEach(sub => sub.classList.add('selected'));
+                        selectedSubs = totalSubs;
                         checkedCount++;
 
                         if (checkedCount === items.length) {
@@ -885,6 +1184,37 @@
             const foundText = document.getElementById('foundText');
             const matchCard = document.getElementById('matchCard');
             const continueBtn = document.getElementById('continueBtn');
+
+            // Setup photo upload functionality
+            const photoSlots = document.querySelectorAll('.photo-slot');
+            photoSlots.forEach(slot => {
+                const input = slot.querySelector('.photo-input');
+
+                slot.addEventListener('click', () => {
+                    input.click();
+                });
+
+                input.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            // Remove existing image if any
+                            const existingImg = slot.querySelector('img');
+                            if (existingImg) {
+                                existingImg.remove();
+                            }
+
+                            // Create and add new image
+                            const img = document.createElement('img');
+                            img.src = event.target.result;
+                            slot.appendChild(img);
+                            slot.classList.add('has-photo');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
 
             setTimeout(() => {
                 searchingText.style.display = 'none';
