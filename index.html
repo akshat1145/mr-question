@@ -1,373 +1,337 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #8cd3fe; -webkit-text-stroke: #8cd3fe}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #c27e65; -webkit-text-stroke: #c27e65}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #c1c1c1; -webkit-text-stroke: #c1c1c1}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; min-height: 14.0px}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #cdad6a; -webkit-text-stroke: #cdad6a}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #598a43; -webkit-text-stroke: #598a43}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #d4d69a; -webkit-text-stroke: #d4d69a}
-    span.s1 {font-kerning: none; color: #6d6d6d; background-color: #181818; -webkit-text-stroke: 0px #6d6d6d}
-    span.s2 {font-kerning: none; background-color: #181818}
-    span.s3 {font-kerning: none; color: #c1c1c1; background-color: #181818; -webkit-text-stroke: 0px #c1c1c1}
-    span.s4 {font-kerning: none; color: #8cd3fe; background-color: #181818; -webkit-text-stroke: 0px #8cd3fe}
-    span.s5 {font-kerning: none; color: #c27e65; background-color: #181818; -webkit-text-stroke: 0px #c27e65}
-    span.s6 {font-kerning: none; color: #4689cc; background-color: #181818; -webkit-text-stroke: 0px #4689cc}
-    span.s7 {font-kerning: none; color: #a7c598; background-color: #181818; -webkit-text-stroke: 0px #a7c598}
-    span.s8 {font-kerning: none}
-    span.s9 {font-kerning: none; color: #cdad6a; background-color: #181818; -webkit-text-stroke: 0px #cdad6a}
-    span.s10 {font-kerning: none; color: #cacaca; background-color: #181818; -webkit-text-stroke: 0px #cacaca}
-    span.s11 {font-kerning: none; color: #d4d69a; background-color: #181818; -webkit-text-stroke: 0px #d4d69a}
-    span.s12 {font-kerning: none; color: #b76fb3; background-color: #181818; -webkit-text-stroke: 0px #b76fb3}
-    span.s13 {font-kerning: none; color: #42b3ff; background-color: #181818; -webkit-text-stroke: 0px #42b3ff}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d0a1a 50%, #1a0a0a 100%);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float-up 6s ease-in infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #ff6b8a;
+            font-size: 3.5rem;
+            text-shadow: 0 0 20px rgba(255, 107, 138, 0.5),
+                         0 0 40px rgba(255, 107, 138, 0.3);
+            margin-bottom: 20px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 107, 138, 0.5),
+                             0 0 40px rgba(255, 107, 138, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 107, 138, 0.8),
+                             0 0 60px rgba(255, 107, 138, 0.5),
+                             0 0 80px rgba(255, 107, 138, 0.3);
+            }
+        }
+
+        .heart-icon {
+            font-size: 4rem;
+            animation: heartbeat 1s ease-in-out infinite;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.15); }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            min-height: 100px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-family: 'Georgia', serif;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b8a, #ff8fab);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 138, 0.4);
+        }
+
+        .btn-yes:hover {
+            box-shadow: 0 6px 25px rgba(255, 107, 138, 0.6);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #666, #888);
+            color: white;
+            position: absolute;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .celebration.active {
+            display: flex;
+        }
+
+        .celebration h2 {
+            color: #ff6b8a;
+            font-size: 4rem;
+            text-shadow: 0 0 30px rgba(255, 107, 138, 0.8);
+            animation: celebrate 0.5s ease-in-out infinite alternate;
+        }
+
+        .celebration .hearts {
+            font-size: 5rem;
+            margin-top: 20px;
+        }
+
+        @keyframes celebrate {
+            from { transform: scale(1) rotate(-2deg); }
+            to { transform: scale(1.05) rotate(2deg); }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: sparkle-fade 1s ease-out forwards;
+            z-index: 50;
+        }
+
+        @keyframes sparkle-fade {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(360deg);
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!</span><span class="s2">DOCTYPE</span><span class="s3"> </span><span class="s4">html</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1">&lt;</span><span class="s2">html</span><span class="s3"> </span><span class="s4">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1">&lt;</span><span class="s2">head</span><span class="s1">&gt;</span></p>
-<p class="p2"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s6">meta</span><span class="s3"> </span><span class="s2">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s1">&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s6">meta</span><span class="s3"> </span><span class="s4">name</span><span class="s3">=</span><span class="s2">"viewport"</span><span class="s3"> </span><span class="s4">content</span><span class="s3">=</span><span class="s2">"width=device-width, initial-scale=1.0"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s6">title</span><span class="s1">&gt;</span><span class="s2">Will You Be My Valentine?</span><span class="s1">&lt;/</span><span class="s6">title</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s2">style</span><span class="s1">&gt;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">*</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">margin</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">padding</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">box-sizing</span><span class="s2">: </span><span class="s5">border-box</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">body</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">min-height</span><span class="s2">: </span><span class="s7">100vh</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">display</span><span class="s2">: </span><span class="s5">flex</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">flex-direction</span><span class="s2">: </span><span class="s5">column</span><span class="s2">;</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">justify-content</span><span class="s10">: </span><span class="s5">center</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">align-items</span><span class="s2">: </span><span class="s5">center</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">background</span><span class="s2">: </span><span class="s11">linear-gradient</span><span class="s2">(</span><span class="s7">135deg</span><span class="s2">, </span><span class="s5">#1a0a0a</span><span class="s2"> </span><span class="s7">0%</span><span class="s2">, </span><span class="s5">#2d0a1a</span><span class="s2"> </span><span class="s7">50%</span><span class="s2">, </span><span class="s5">#1a0a0a</span><span class="s2"> </span><span class="s7">100%</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-family</span><span class="s2">: </span><span class="s5">'Georgia'</span><span class="s2">, </span><span class="s5">serif</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">overflow</span><span class="s2">: </span><span class="s5">hidden</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">position</span><span class="s2">: </span><span class="s5">relative</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.hearts-bg</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">position</span><span class="s2">: </span><span class="s5">fixed</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">top</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">left</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">width</span><span class="s2">: </span><span class="s7">100%</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">height</span><span class="s2">: </span><span class="s7">100%</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">pointer-events</span><span class="s2">: </span><span class="s5">none</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">overflow</span><span class="s2">: </span><span class="s5">hidden</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">z-index</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.floating-heart</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">position</span><span class="s2">: </span><span class="s5">absolute</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">20px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">animation</span><span class="s2">: float-up </span><span class="s7">6s</span><span class="s2"> </span><span class="s5">ease-in</span><span class="s2"> </span><span class="s5">infinite</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">0.6</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s12">@keyframes</span><span class="s2"> </span><span class="s4">float-up</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>0% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">transform</span><span class="s2">: </span><span class="s11">translateY</span><span class="s2">(</span><span class="s7">100vh</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">0deg</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>10% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">0.6</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>90% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">0.6</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>100% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">transform</span><span class="s2">: </span><span class="s11">translateY</span><span class="s2">(</span><span class="s7">-100px</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">360deg</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.container</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">text-align</span><span class="s2">: </span><span class="s5">center</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">z-index</span><span class="s2">: </span><span class="s7">10</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">padding</span><span class="s2">: </span><span class="s7">40px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">h1</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">color</span><span class="s2">: </span><span class="s5">#ff6b8a</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">3.5rem</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">text-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">20px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.5</span><span class="s2">),</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                         </span></span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">40px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.3</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">margin-bottom</span><span class="s2">: </span><span class="s7">20px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">animation</span><span class="s2">: pulse-glow </span><span class="s7">2s</span><span class="s2"> </span><span class="s5">ease-in-out</span><span class="s2"> </span><span class="s5">infinite</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s12">@keyframes</span><span class="s2"> </span><span class="s4">pulse-glow</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>0%, 100% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">text-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">20px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.5</span><span class="s2">),</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                             </span></span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">40px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.3</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>50% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">text-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">30px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.8</span><span class="s2">),</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                             </span></span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">60px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.5</span><span class="s2">),</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                             </span></span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">80px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.3</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.heart-icon</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">4rem</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">animation</span><span class="s2">: heartbeat </span><span class="s7">1s</span><span class="s2"> </span><span class="s5">ease-in-out</span><span class="s2"> </span><span class="s5">infinite</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">display</span><span class="s2">: </span><span class="s5">inline-block</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">margin-bottom</span><span class="s2">: </span><span class="s7">30px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s12">@keyframes</span><span class="s2"> </span><span class="s4">heartbeat</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>0%, 100% { </span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1</span><span class="s2">); }</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>25% { </span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1.1</span><span class="s2">); }</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>50% { </span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1</span><span class="s2">); }</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>75% { </span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1.15</span><span class="s2">); }</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">.buttons</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">display</span><span class="s2">: </span><span class="s5">flex</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">gap</span><span class="s2">: </span><span class="s7">40px</span><span class="s2">;</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">justify-content</span><span class="s10">: </span><span class="s5">center</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">align-items</span><span class="s2">: </span><span class="s5">center</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">margin-top</span><span class="s2">: </span><span class="s7">30px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">min-height</span><span class="s2">: </span><span class="s7">100px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">.btn</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">padding</span><span class="s2">: </span><span class="s7">15px</span><span class="s2"> </span><span class="s7">40px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">1.3rem</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-family</span><span class="s2">: </span><span class="s5">'Georgia'</span><span class="s2">, </span><span class="s5">serif</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">border</span><span class="s2">: </span><span class="s5">none</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">border-radius</span><span class="s2">: </span><span class="s7">50px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">cursor</span><span class="s2">: </span><span class="s5">pointer</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">transition</span><span class="s2">: </span><span class="s5">all</span><span class="s2"> </span><span class="s7">0.3s</span><span class="s2"> </span><span class="s5">ease</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-weight</span><span class="s2">: </span><span class="s5">bold</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">.btn-yes</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">background</span><span class="s2">: </span><span class="s11">linear-gradient</span><span class="s2">(</span><span class="s7">135deg</span><span class="s2">, </span><span class="s5">#ff6b8a</span><span class="s2">, </span><span class="s5">#ff8fab</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">color</span><span class="s2">: </span><span class="s5">white</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">box-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">4px</span><span class="s2"> </span><span class="s7">15px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.4</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.btn-yes:hover</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">box-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">6px</span><span class="s2"> </span><span class="s7">25px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.6</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">.btn-no</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">background</span><span class="s2">: </span><span class="s11">linear-gradient</span><span class="s2">(</span><span class="s7">135deg</span><span class="s2">, </span><span class="s5">#666</span><span class="s2">, </span><span class="s5">#888</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">color</span><span class="s2">: </span><span class="s5">white</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">position</span><span class="s2">: </span><span class="s5">absolute</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">box-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">4px</span><span class="s2"> </span><span class="s7">15px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">0</span><span class="s2">, </span><span class="s7">0</span><span class="s2">, </span><span class="s7">0</span><span class="s2">, </span><span class="s7">0.3</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.celebration</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">display</span><span class="s2">: </span><span class="s5">none</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">position</span><span class="s2">: </span><span class="s5">fixed</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">top</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">left</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">width</span><span class="s2">: </span><span class="s7">100%</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">height</span><span class="s2">: </span><span class="s7">100%</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">background</span><span class="s2">: </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">0</span><span class="s2">, </span><span class="s7">0</span><span class="s2">, </span><span class="s7">0</span><span class="s2">, </span><span class="s7">0.9</span><span class="s2">);</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">justify-content</span><span class="s10">: </span><span class="s5">center</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">align-items</span><span class="s2">: </span><span class="s5">center</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">flex-direction</span><span class="s2">: </span><span class="s5">column</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">z-index</span><span class="s2">: </span><span class="s7">100</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.celebration.active</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">display</span><span class="s2">: </span><span class="s5">flex</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.celebration</span><span class="s10"> </span><span class="s2">h2</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">color</span><span class="s2">: </span><span class="s5">#ff6b8a</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">4rem</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">text-shadow</span><span class="s2">: </span><span class="s7">0</span><span class="s2"> </span><span class="s7">0</span><span class="s2"> </span><span class="s7">30px</span><span class="s2"> </span><span class="s11">rgba</span><span class="s2">(</span><span class="s7">255</span><span class="s2">, </span><span class="s7">107</span><span class="s2">, </span><span class="s7">138</span><span class="s2">, </span><span class="s7">0.8</span><span class="s2">);</span></p>
-<p class="p3"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s4">animation</span><span class="s10">: celebrate </span><span class="s7">0.5s</span><span class="s10"> </span><span class="s2">ease-in-out</span><span class="s10"> </span><span class="s2">infinite</span><span class="s10"> </span><span class="s2">alternate</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p7"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">.celebration</span><span class="s10"> </span><span class="s2">.hearts</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">5rem</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">margin-top</span><span class="s2">: </span><span class="s7">20px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s12">@keyframes</span><span class="s2"> </span><span class="s4">celebrate</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>from { </span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">-2deg</span><span class="s2">); }</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>to { </span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1.05</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">2deg</span><span class="s2">); }</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s9">.sparkle</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">position</span><span class="s2">: </span><span class="s5">fixed</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">pointer-events</span><span class="s2">: </span><span class="s5">none</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">font-size</span><span class="s2">: </span><span class="s7">20px</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">animation</span><span class="s2">: sparkle-fade </span><span class="s7">1s</span><span class="s2"> </span><span class="s5">ease-out</span><span class="s2"> </span><span class="s5">forwards</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">z-index</span><span class="s2">: </span><span class="s7">50</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s12">@keyframes</span><span class="s10"> </span><span class="s2">sparkle-fade</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>0% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">1</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">0</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">0deg</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>50% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">1</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">1.2</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">180deg</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>100% {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">opacity</span><span class="s2">: </span><span class="s7">0</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">transform</span><span class="s2">: </span><span class="s11">scale</span><span class="s2">(</span><span class="s7">0.5</span><span class="s2">) </span><span class="s11">rotate</span><span class="s2">(</span><span class="s7">360deg</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s10"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;/</span><span class="s2">style</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/</span><span class="s2">head</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1">&lt;</span><span class="s2">body</span><span class="s1">&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s6">div</span><span class="s3"> </span><span class="s4">class</span><span class="s3">=</span><span class="s2">"hearts-bg"</span><span class="s3"> </span><span class="s4">id</span><span class="s3">=</span><span class="s2">"heartsBg"</span><span class="s1">&gt;&lt;/</span><span class="s6">div</span><span class="s1">&gt;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s6">div</span><span class="s3"> </span><span class="s4">class</span><span class="s3">=</span><span class="s2">"container"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;</span><span class="s6">div</span><span class="s2"> </span><span class="s4">class</span><span class="s2">=</span><span class="s5">"heart-icon"</span><span class="s1">&gt;</span><span class="s2">💕</span><span class="s1">&lt;/</span><span class="s6">div</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;</span><span class="s6">h1</span><span class="s1">&gt;</span><span class="s2">Will You Be My Valentine?</span><span class="s1">&lt;/</span><span class="s6">h1</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;</span><span class="s6">div</span><span class="s2"> </span><span class="s4">class</span><span class="s2">=</span><span class="s5">"buttons"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;</span><span class="s6">button</span><span class="s2"> </span><span class="s4">class</span><span class="s2">=</span><span class="s5">"btn btn-yes"</span><span class="s2"> </span><span class="s4">id</span><span class="s2">=</span><span class="s5">"yesBtn"</span><span class="s1">&gt;</span><span class="s2">Yes! 💖</span><span class="s1">&lt;/</span><span class="s6">button</span><span class="s1">&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;</span><span class="s6">button</span><span class="s3"> </span><span class="s4">class</span><span class="s3">=</span><span class="s2">"btn btn-no"</span><span class="s3"> </span><span class="s4">id</span><span class="s3">=</span><span class="s2">"noBtn"</span><span class="s1">&gt;</span><span class="s3">No</span><span class="s1">&lt;/</span><span class="s6">button</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;/</span><span class="s6">div</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;/</span><span class="s6">div</span><span class="s1">&gt;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s6">div</span><span class="s3"> </span><span class="s4">class</span><span class="s3">=</span><span class="s2">"celebration"</span><span class="s3"> </span><span class="s4">id</span><span class="s3">=</span><span class="s2">"celebration"</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;</span><span class="s6">h2</span><span class="s1">&gt;</span><span class="s2">Yay! 💕</span><span class="s1">&lt;/</span><span class="s6">h2</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;</span><span class="s6">div</span><span class="s2"> </span><span class="s4">class</span><span class="s2">=</span><span class="s5">"hearts"</span><span class="s1">&gt;</span><span class="s2">💖💕💗💓💘</span><span class="s1">&lt;/</span><span class="s6">div</span><span class="s1">&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;</span><span class="s6">p</span><span class="s3"> </span><span class="s4">style</span><span class="s3">=</span><span class="s2">"color: #ff8fab; font-size: 1.5rem; margin-top: 20px;"</span><span class="s1">&gt;</span><span class="s3">I knew you'd say yes!</span><span class="s1">&lt;/</span><span class="s6">p</span><span class="s1">&gt;</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;/</span><span class="s6">div</span><span class="s1">&gt;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p1"><span class="s3"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;</span><span class="s2">script</span><span class="s1">&gt;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">yesBtn</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">getElementById</span><span class="s2">(</span><span class="s5">'yesBtn'</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">noBtn</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">getElementById</span><span class="s2">(</span><span class="s5">'noBtn'</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">celebration</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">getElementById</span><span class="s2">(</span><span class="s5">'celebration'</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">heartsBg</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">getElementById</span><span class="s2">(</span><span class="s5">'heartsBg'</span><span class="s2">);</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">let</span><span class="s2"> </span><span class="s4">yesScale</span><span class="s2"> = </span><span class="s7">1</span><span class="s2">;</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s6">let</span><span class="s10"> </span><span class="s2">mouseMovements</span><span class="s10"> = </span><span class="s7">0</span><span class="s10">;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">// Create floating hearts background</span></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s6">function</span><span class="s10"> </span><span class="s2">createFloatingHearts</span><span class="s10">() {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">hearts</span><span class="s2"> = [</span><span class="s5">'💕'</span><span class="s2">, </span><span class="s5">'💖'</span><span class="s2">, </span><span class="s5">'💗'</span><span class="s2">, </span><span class="s5">'💓'</span><span class="s2">, </span><span class="s5">'❤️'</span><span class="s2">, </span><span class="s5">'💘'</span><span class="s2">, </span><span class="s5">'💝'</span><span class="s2">];</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">for</span><span class="s2"> (</span><span class="s6">let</span><span class="s2"> </span><span class="s4">i</span><span class="s2"> = </span><span class="s7">0</span><span class="s2">; </span><span class="s4">i</span><span class="s2"> &lt; </span><span class="s7">20</span><span class="s2">; </span><span class="s4">i</span><span class="s2">++) {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">heart</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">createElement</span><span class="s2">(</span><span class="s5">'div'</span><span class="s2">);</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">className</span><span class="s10"> = </span><span class="s5">'floating-heart'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">textContent</span><span class="s10"> =</span><span class="s2"> </span><span class="s13">hearts</span><span class="s10">[</span><span class="s2">Math</span><span class="s10">.</span><span class="s11">floor</span><span class="s10">(</span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() *</span><span class="s2"> </span><span class="s13">hearts</span><span class="s10">.</span><span class="s2">length</span><span class="s10">)];</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10"> = </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() * </span><span class="s7">100</span><span class="s10"> + </span><span class="s5">'%'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">animationDelay</span><span class="s10"> = </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() * </span><span class="s7">6</span><span class="s10"> + </span><span class="s5">'s'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">fontSize</span><span class="s10"> = (</span><span class="s7">15</span><span class="s10"> + </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() * </span><span class="s7">20</span><span class="s10">) + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">heartsBg</span><span class="s10">.</span><span class="s11">appendChild</span><span class="s10">(</span><span class="s13">heart</span><span class="s10">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">createFloatingHearts</span><span class="s10">();</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">// Yes button grows with mouse movement</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s4">document</span><span class="s2">.</span><span class="s11">addEventListener</span><span class="s2">(</span><span class="s5">'mousemove'</span><span class="s2">, (</span><span class="s4">e</span><span class="s2">) </span><span class="s6">=&gt;</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">mouseMovements</span><span class="s2">++;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">// Grow yes button</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">if</span><span class="s2"> (</span><span class="s4">mouseMovements</span><span class="s2"> % </span><span class="s7">3</span><span class="s2"> === </span><span class="s7">0</span><span class="s2"> &amp;&amp; </span><span class="s4">yesScale</span><span class="s2"> &lt; </span><span class="s7">3</span><span class="s2">) {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s4">yesScale</span><span class="s2"> += </span><span class="s7">0.02</span><span class="s2">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">yesBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">transform</span><span class="s10"> =</span><span class="s5"> `scale(${</span><span class="s2">yesScale</span><span class="s5">})`</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">// Make no button run away</span></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s10"> </span><span class="s13">noRect</span><span class="s10"> =</span><span class="s4"> </span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">getBoundingClientRect</span><span class="s10">();</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">noCenterX</span><span class="s2"> =</span><span class="s4"> </span><span class="s13">noRect</span><span class="s2">.</span><span class="s4">left</span><span class="s2"> +</span><span class="s4"> </span><span class="s13">noRect</span><span class="s2">.</span><span class="s4">width</span><span class="s2"> / </span><span class="s7">2</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">noCenterY</span><span class="s2"> =</span><span class="s4"> </span><span class="s13">noRect</span><span class="s2">.</span><span class="s4">top</span><span class="s2"> +</span><span class="s4"> </span><span class="s13">noRect</span><span class="s2">.</span><span class="s4">height</span><span class="s2"> / </span><span class="s7">2</span><span class="s2">;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">distX</span><span class="s2"> =</span><span class="s4"> e</span><span class="s2">.</span><span class="s4">clientX</span><span class="s2"> - </span><span class="s13">noCenterX</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">distY</span><span class="s2"> =</span><span class="s4"> e</span><span class="s2">.</span><span class="s4">clientY</span><span class="s2"> - </span><span class="s13">noCenterY</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">distance</span><span class="s2"> = </span><span class="s4">Math</span><span class="s2">.</span><span class="s11">sqrt</span><span class="s2">(</span><span class="s13">distX</span><span class="s2"> * </span><span class="s13">distX</span><span class="s2"> + </span><span class="s13">distY</span><span class="s2"> * </span><span class="s13">distY</span><span class="s2">);</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">if</span><span class="s2"> (</span><span class="s13">distance</span><span class="s2"> &lt; </span><span class="s7">150</span><span class="s2">) {</span></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s2">// Calculate escape direction</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">escapeX</span><span class="s2"> = -</span><span class="s13">distX</span><span class="s2"> / </span><span class="s13">distance</span><span class="s2"> * </span><span class="s7">100</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">escapeY</span><span class="s2"> = -</span><span class="s13">distY</span><span class="s2"> / </span><span class="s13">distance</span><span class="s2"> * </span><span class="s7">100</span><span class="s2">;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s2">// Get current position</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s6">let</span><span class="s10"> </span><span class="s2">currentLeft</span><span class="s10"> = </span><span class="s11">parseFloat</span><span class="s10">(</span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10">) || </span><span class="s2">window</span><span class="s10">.</span><span class="s2">innerWidth</span><span class="s10"> / </span><span class="s7">2</span><span class="s10"> + </span><span class="s7">100</span><span class="s10">;</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s6">let</span><span class="s10"> </span><span class="s2">currentTop</span><span class="s10"> = </span><span class="s11">parseFloat</span><span class="s10">(</span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">top</span><span class="s10">) || </span><span class="s2">window</span><span class="s10">.</span><span class="s2">innerHeight</span><span class="s10"> / </span><span class="s7">2</span><span class="s10">;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s2">// Calculate new position</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s6">let</span><span class="s2"> </span><span class="s4">newLeft</span><span class="s2"> = </span><span class="s4">currentLeft</span><span class="s2"> + </span><span class="s13">escapeX</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s6">let</span><span class="s2"> </span><span class="s4">newTop</span><span class="s2"> = </span><span class="s4">currentTop</span><span class="s2"> + </span><span class="s13">escapeY</span><span class="s2">;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s2">// Keep within bounds</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">padding</span><span class="s2"> = </span><span class="s7">100</span><span class="s2">;</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s2">newLeft</span><span class="s10"> = </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">max</span><span class="s10">(</span><span class="s13">padding</span><span class="s10">, </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">min</span><span class="s10">(</span><span class="s2">window</span><span class="s10">.</span><span class="s2">innerWidth</span><span class="s10"> - </span><span class="s13">padding</span><span class="s10">, </span><span class="s2">newLeft</span><span class="s10">));</span></p>
-<p class="p2"><span class="s10"><span class="Apple-converted-space">                </span></span><span class="s2">newTop</span><span class="s10"> = </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">max</span><span class="s10">(</span><span class="s13">padding</span><span class="s10">, </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">min</span><span class="s10">(</span><span class="s2">window</span><span class="s10">.</span><span class="s2">innerHeight</span><span class="s10"> - </span><span class="s13">padding</span><span class="s10">, </span><span class="s2">newTop</span><span class="s10">));</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10"> = </span><span class="s2">newLeft</span><span class="s10"> + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">top</span><span class="s10"> = </span><span class="s2">newTop</span><span class="s10"> + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">// Create sparkle trail occasionally</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">if</span><span class="s2"> (</span><span class="s4">mouseMovements</span><span class="s2"> % </span><span class="s7">10</span><span class="s2"> === </span><span class="s7">0</span><span class="s2">) {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s11">createSparkle</span><span class="s2">(</span><span class="s4">e</span><span class="s2">.</span><span class="s4">clientX</span><span class="s2">,</span><span class="s4"> e</span><span class="s2">.</span><span class="s4">clientY</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">// Initialize no button position</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">function</span><span class="s2"> </span><span class="s11">initNoButton</span><span class="s2">() {</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10"> = (</span><span class="s2">window</span><span class="s10">.</span><span class="s2">innerWidth</span><span class="s10"> / </span><span class="s7">2</span><span class="s10"> + </span><span class="s7">100</span><span class="s10">) + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">top</span><span class="s10"> = (</span><span class="s2">window</span><span class="s10">.</span><span class="s2">innerHeight</span><span class="s10"> / </span><span class="s7">2</span><span class="s10"> + </span><span class="s7">50</span><span class="s10">) + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">initNoButton</span><span class="s10">();</span></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s4">window</span><span class="s10">.</span><span class="s2">addEventListener</span><span class="s10">(</span><span class="s5">'resize'</span><span class="s10">, </span><span class="s2">initNoButton</span><span class="s10">);</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">// Yes button click celebration</span></p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s13">yesBtn</span><span class="s10">.</span><span class="s2">addEventListener</span><span class="s10">(</span><span class="s5">'click'</span><span class="s10">, () </span><span class="s6">=&gt;</span><span class="s10"> {</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">celebration</span><span class="s10">.</span><span class="s2">classList</span><span class="s10">.</span><span class="s11">add</span><span class="s10">(</span><span class="s5">'active'</span><span class="s10">);</span></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">            </span></span><span class="s2">createCelebrationHearts</span><span class="s10">();</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p8"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s2">// No button becomes even more evasive on hover</span></p>
-<p class="p9"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">addEventListener</span><span class="s10">(</span><span class="s5">'mouseenter'</span><span class="s10">, () </span><span class="s6">=&gt;</span><span class="s10"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">newX</span><span class="s2"> = </span><span class="s4">Math</span><span class="s2">.</span><span class="s11">random</span><span class="s2">() * (</span><span class="s4">window</span><span class="s2">.</span><span class="s4">innerWidth</span><span class="s2"> - </span><span class="s7">200</span><span class="s2">) + </span><span class="s7">100</span><span class="s2">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">newY</span><span class="s2"> = </span><span class="s4">Math</span><span class="s2">.</span><span class="s11">random</span><span class="s2">() * (</span><span class="s4">window</span><span class="s2">.</span><span class="s4">innerHeight</span><span class="s2"> - </span><span class="s7">200</span><span class="s2">) + </span><span class="s7">100</span><span class="s2">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10"> = </span><span class="s13">newX</span><span class="s10"> + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">noBtn</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">top</span><span class="s10"> = </span><span class="s13">newY</span><span class="s10"> + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s6">function</span><span class="s2"> </span><span class="s11">createSparkle</span><span class="s2">(</span><span class="s4">x</span><span class="s2">, </span><span class="s4">y</span><span class="s2">) {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">sparkle</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">createElement</span><span class="s2">(</span><span class="s5">'div'</span><span class="s2">);</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">sparkle</span><span class="s10">.</span><span class="s2">className</span><span class="s10"> = </span><span class="s5">'sparkle'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">sparkle</span><span class="s10">.</span><span class="s2">textContent</span><span class="s10"> = [</span><span class="s5">'✨'</span><span class="s10">, </span><span class="s5">'💫'</span><span class="s10">, </span><span class="s5">'⭐'</span><span class="s10">, </span><span class="s5">'💕'</span><span class="s10">][</span><span class="s2">Math</span><span class="s10">.</span><span class="s11">floor</span><span class="s10">(</span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() * </span><span class="s7">4</span><span class="s10">)];</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">sparkle</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10"> = </span><span class="s2">x</span><span class="s10"> + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s13">sparkle</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">top</span><span class="s10"> = </span><span class="s2">y</span><span class="s10"> + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s4">document</span><span class="s2">.</span><span class="s4">body</span><span class="s2">.</span><span class="s11">appendChild</span><span class="s2">(</span><span class="s13">sparkle</span><span class="s2">);</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s11">setTimeout</span><span class="s2">(() </span><span class="s6">=&gt;</span><span class="s4"> </span><span class="s13">sparkle</span><span class="s2">.</span><span class="s11">remove</span><span class="s2">(), </span><span class="s7">1000</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p6"><span class="s8"></span><br></p>
-<p class="p9"><span class="s10"><span class="Apple-converted-space">        </span></span><span class="s6">function</span><span class="s10"> </span><span class="s2">createCelebrationHearts</span><span class="s10">() {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">hearts</span><span class="s2"> = [</span><span class="s5">'💕'</span><span class="s2">, </span><span class="s5">'💖'</span><span class="s2">, </span><span class="s5">'💗'</span><span class="s2">, </span><span class="s5">'💓'</span><span class="s2">, </span><span class="s5">'❤️'</span><span class="s2">, </span><span class="s5">'💘'</span><span class="s2">, </span><span class="s5">'💝'</span><span class="s2">, </span><span class="s5">'💞'</span><span class="s2">];</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">for</span><span class="s2"> (</span><span class="s6">let</span><span class="s2"> </span><span class="s4">i</span><span class="s2"> = </span><span class="s7">0</span><span class="s2">; </span><span class="s4">i</span><span class="s2"> &lt; </span><span class="s7">50</span><span class="s2">; </span><span class="s4">i</span><span class="s2">++) {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span></span><span class="s11">setTimeout</span><span class="s2">(() </span><span class="s6">=&gt;</span><span class="s2"> {</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s6">const</span><span class="s2"> </span><span class="s13">heart</span><span class="s2"> = </span><span class="s4">document</span><span class="s2">.</span><span class="s11">createElement</span><span class="s2">(</span><span class="s5">'div'</span><span class="s2">);</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">className</span><span class="s10"> = </span><span class="s5">'floating-heart'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">textContent</span><span class="s10"> =</span><span class="s2"> </span><span class="s13">hearts</span><span class="s10">[</span><span class="s2">Math</span><span class="s10">.</span><span class="s11">floor</span><span class="s10">(</span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() *</span><span class="s2"> </span><span class="s13">hearts</span><span class="s10">.</span><span class="s2">length</span><span class="s10">)];</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">left</span><span class="s10"> = </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() * </span><span class="s7">100</span><span class="s10"> + </span><span class="s5">'%'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">fontSize</span><span class="s10"> = (</span><span class="s7">20</span><span class="s10"> + </span><span class="s2">Math</span><span class="s10">.</span><span class="s11">random</span><span class="s10">() * </span><span class="s7">30</span><span class="s10">) + </span><span class="s5">'px'</span><span class="s10">;</span></p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s13">heart</span><span class="s10">.</span><span class="s2">style</span><span class="s10">.</span><span class="s2">zIndex</span><span class="s10"> = </span><span class="s5">'101'</span><span class="s10">;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                    </span></span><span class="s4">document</span><span class="s2">.</span><span class="s4">body</span><span class="s2">.</span><span class="s11">appendChild</span><span class="s2">(</span><span class="s13">heart</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">                </span>}, </span><span class="s4">i</span><span class="s2"> * </span><span class="s7">100</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s10"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;/</span><span class="s2">script</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/</span><span class="s2">body</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/</span><span class="s2">html</span><span class="s1">&gt;</span></p>
-<p class="p6"><span class="s8"></span><br></p>
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <div class="container">
+        <div class="heart-icon">💕</div>
+        <h1>Will You Be My Valentine?</h1>
+        <div class="buttons">
+            <button class="btn btn-yes" id="yesBtn">Yes! 💖</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <h2>Yay! 💕</h2>
+        <div class="hearts">💖💕💗💓💘</div>
+        <p style="color: #ff8fab; font-size: 1.5rem; margin-top: 20px;">I knew you'd say yes!</p>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const celebration = document.getElementById('celebration');
+        const heartsBg = document.getElementById('heartsBg');
+
+        let yesScale = 1;
+        let mouseMovements = 0;
+
+        // Create floating hearts background
+        function createFloatingHearts() {
+            const hearts = ['💕', '💖', '💗', '💓', '❤️', '💘', '💝'];
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+                heartsBg.appendChild(heart);
+            }
+        }
+        createFloatingHearts();
+
+        // Yes button grows with mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseMovements++;
+
+            // Grow yes button
+            if (mouseMovements % 3 === 0 && yesScale < 3) {
+                yesScale += 0.02;
+                yesBtn.style.transform = `scale(${yesScale})`;
+            }
+
+            // Make no button run away
+            const noRect = noBtn.getBoundingClientRect();
+            const noCenterX = noRect.left + noRect.width / 2;
+            const noCenterY = noRect.top + noRect.height / 2;
+
+            const distX = e.clientX - noCenterX;
+            const distY = e.clientY - noCenterY;
+            const distance = Math.sqrt(distX * distX + distY * distY);
+
+            if (distance < 150) {
+                // Calculate escape direction
+                const escapeX = -distX / distance * 100;
+                const escapeY = -distY / distance * 100;
+
+                // Get current position
+                let currentLeft = parseFloat(noBtn.style.left) || window.innerWidth / 2 + 100;
+                let currentTop = parseFloat(noBtn.style.top) || window.innerHeight / 2;
+
+                // Calculate new position
+                let newLeft = currentLeft + escapeX;
+                let newTop = currentTop + escapeY;
+
+                // Keep within bounds
+                const padding = 100;
+                newLeft = Math.max(padding, Math.min(window.innerWidth - padding, newLeft));
+                newTop = Math.max(padding, Math.min(window.innerHeight - padding, newTop));
+
+                noBtn.style.left = newLeft + 'px';
+                noBtn.style.top = newTop + 'px';
+            }
+
+            // Create sparkle trail occasionally
+            if (mouseMovements % 10 === 0) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        // Initialize no button position
+        function initNoButton() {
+            noBtn.style.left = (window.innerWidth / 2 + 100) + 'px';
+            noBtn.style.top = (window.innerHeight / 2 + 50) + 'px';
+        }
+        initNoButton();
+        window.addEventListener('resize', initNoButton);
+
+        // Yes button click celebration
+        yesBtn.addEventListener('click', () => {
+            celebration.classList.add('active');
+            createCelebrationHearts();
+        });
+
+        // No button becomes even more evasive on hover
+        noBtn.addEventListener('mouseenter', () => {
+            const newX = Math.random() * (window.innerWidth - 200) + 100;
+            const newY = Math.random() * (window.innerHeight - 200) + 100;
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = ['✨', '💫', '⭐', '💕'][Math.floor(Math.random() * 4)];
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        function createCelebrationHearts() {
+            const hearts = ['💕', '💖', '💗', '💓', '❤️', '💘', '💝', '💞'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+                    heart.style.zIndex = '101';
+                    document.body.appendChild(heart);
+                }, i * 100);
+            }
+        }
+    </script>
 </body>
 </html>
+
